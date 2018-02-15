@@ -11,22 +11,33 @@ public class RandomTestField {
         System.out.print("Enter the number of wires: ");
         Scanner in = new Scanner(System.in);
         int size = in.nextInt();
-        System.out.println("Enter the number of Random comparisons: ");
+        System.out.print("Enter the number of Random comparisons: ");
         int numComps = in.nextInt();
-        ArrayList<String> AllData = TEST.generateBinary(size, "");
-        System.out.println(AllData);
-        int n = 0;
+        ArrayList<Double> percentages = new ArrayList<>();
+        int i = 0;
         Random rand = new Random();
-        while (n != numComps) {
-            int topPortion = rand.nextInt(size);
-            int bottomPortion = rand.nextInt(size);
-            if (TEST.createComparison(size, topPortion, bottomPortion)) {
-                n++;
+        while (i < 10) {
+            ArrayList<String> AllData = TEST.generateBinary(size, "");
+            int n = 0;
+            while (n < numComps) {
+                int topPortion = rand.nextInt(size);
+                int bottomPortion = rand.nextInt(size);
+                if (TEST.createComparison(size, topPortion, bottomPortion)) {
+                    n++;
+                }
             }
+            ArrayList<String> unsortedData = TEST.sortData(AllData);
+            percentages.add(TEST.percentageNotSorted(unsortedData, AllData));
+            System.out.println("Current Trial: " + TEST.percentageNotSorted(unsortedData, AllData));
+            i++;
+            System.out.println("=-=-=-= Loop " + i + " =-=-=-=-=");
         }
-        HashSet<String> unsortedData = TEST.sortData(AllData);
-        System.out.print("Unsorted Data: ");
-        System.out.println(unsortedData);
-        System.out.println("Percentage Unsorted: " + TEST.percentageNotSorted(unsortedData, AllData));
+        double totalPercentages = 0.0;
+        for (int k = 0; k != percentages.size(); k++) {
+            totalPercentages += percentages.get(k);
+        }
+        final double FINAL_PERCENTAGE = totalPercentages / percentages.size();
+        System.out.println("The average of all trials is: " + FINAL_PERCENTAGE);
+
     }
 }

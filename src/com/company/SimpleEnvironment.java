@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.ArrayList;
 public class SimpleEnvironment {
     String inputData = "";
-    HashSet unsortedData = new HashSet<String>();
     ArrayList<Integer> topWires = new ArrayList<>();
     ArrayList<Integer> bottomWires = new ArrayList<>();
 
@@ -47,7 +46,7 @@ public class SimpleEnvironment {
             System.out.println("Error, bottom wire -" + bottomWire + " is not a possible wire");
         }
         else if (topWire == bottomWire) {
-            System.out.println("Error, cannot create a comparison on the same wire");
+            //System.out.println("Error, cannot create a comparison on the same wire");
         }
         else {
             topWires.add(topWire);
@@ -62,8 +61,8 @@ public class SimpleEnvironment {
      * @param data - An arraylist with strings that are the data
      * @return - A hashset containing all of the values that are not fully sorted
      */
-    public HashSet<String> sortData (ArrayList<String> data) {
-        HashSet<String> unsortedDataSets = new HashSet<String>();
+    public ArrayList<String> sortData (ArrayList<String> data) {
+        ArrayList<String> unsortedDataSets = new ArrayList<String>();
         int i = 0;
         if (this.topWires.size() != this.bottomWires.size()) {
             System.out.println("Error, comparisons not properly formatted");
@@ -71,30 +70,30 @@ public class SimpleEnvironment {
         }
         // Loops through all strings in the ArrayList
         while (i != data.size()) {
+
+            System.out.println("Current string: " + data.get(i));
             // Loops through each character in the string
             for (int j = 0; j < data.get(i).length() - 1; j++) {
                 // Loop through each comparison
-                System.out.println(data.get(i) + " Before set to charArray");
                 String setToCharArray = data.get(i);
-                char[] currentString = setToCharArray.toCharArray();
-                System.out.println("After set to char array: " + currentString);
-                for (int k = 0; k < this.topWires.size(); k++) {
-                    if ((data.get(i).charAt(topWires.get(k)) < data.get(i).charAt(bottomWires.get(k)))) {
-                        System.out.println("Current String: " + data.get(i));
+                char[] currentStringCharArray = setToCharArray.toCharArray();
+                for (int p = 0; p < this.topWires.size(); p++) {
+                    if (topWires.get(p) > bottomWires.get(p)) {
+                        int tempWire = topWires.get(p);
+                        topWires.set(p , bottomWires.get(p));
+                        bottomWires.set(p, tempWire);
+                    }
+                    if (currentStringCharArray[topWires.get(p)] < currentStringCharArray[bottomWires.get(p)]) {
                         // Swaps the two characters
-                        System.out.println("Top Wire Location: " + topWires.get(k) + ", Bottom Wire Location: " + bottomWires.get(k));
-                        System.out.println("Top Wire: " + data.get(i).charAt(topWires.get(k)) + ", Bottom Wire: " + data.get(i).charAt(bottomWires.get(k)));
-                        System.out.println("Swapping");
-                        char temp = currentString[this.bottomWires.get(k)];
-                        currentString[this.bottomWires.get(k)] = currentString[this.topWires.get(k)];
-                        System.out.println("After swap: " + currentString.toString());
-                        currentString[this.topWires.get(k)] = temp;
-                        System.out.println("String before set: " + currentString.toString());
-                        data.set(i, currentString.toString());
-                        System.out.println("New String: " + data.get(i));
+                        char temp = currentStringCharArray[this.bottomWires.get(p)];
+                        currentStringCharArray[this.bottomWires.get(p)] = currentStringCharArray[this.topWires.get(p)];
+                        currentStringCharArray[this.topWires.get(p)] = temp;
+                        String alteredSequence = new String(currentStringCharArray);
+                        data.set(i, alteredSequence);
                     }
                 }
             }
+
             boolean isSorted = true;
             for (int k = 0; k < data.get(i).length() - 1; k++) {
                 if ((data.get(i).charAt(k) < data.get(i).charAt(k + 1))) {
@@ -102,11 +101,13 @@ public class SimpleEnvironment {
                 }
             }
             if (!isSorted) {
-                System.out.println("Adding: " + data.get(i));
+                //System.out.println("Adding: " + data.get(i));
                 unsortedDataSets.add(data.get(i));
             }
             i++;
         }
+        topWires.clear();
+        bottomWires.clear();
         return unsortedDataSets;
     }
 
@@ -116,7 +117,7 @@ public class SimpleEnvironment {
      * @param allData - All of the possible binary sequences for the number of wires
      * @return - The percentage that were sorted by the random network
      */
-    public double percentageNotSorted(HashSet<String> unsortedData, ArrayList<String> allData) {
+    public double percentageNotSorted(ArrayList<String> unsortedData, ArrayList<String> allData) {
         System.out.println(unsortedData.size() + " / " + allData.size());
         return ((double) unsortedData.size() / (double) allData.size());
     }
