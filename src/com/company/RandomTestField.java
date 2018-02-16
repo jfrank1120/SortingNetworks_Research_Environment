@@ -16,7 +16,8 @@ public class RandomTestField {
         ArrayList<Double> percentages = new ArrayList<>();
         int i = 0;
         Random rand = new Random();
-        while (i < 10) {
+        ArrayList<Integer> numberOfUnsortedOutputs = new ArrayList<Integer>();
+        while (i < 1000) {
             ArrayList<String> AllData = TEST.generateBinary(size, "");
             int n = 0;
             while (n < numComps) {
@@ -26,18 +27,23 @@ public class RandomTestField {
                     n++;
                 }
             }
-            ArrayList<String> unsortedData = TEST.sortData(AllData);
-            percentages.add(TEST.percentageNotSorted(unsortedData, AllData));
-            System.out.println("Current Trial: " + TEST.percentageNotSorted(unsortedData, AllData));
+            HashSet<String> unsortedData = TEST.sortData(AllData);
+            System.out.println("Current Trial: " + unsortedData.size());
+            System.out.println(unsortedData);
+            numberOfUnsortedOutputs.add(unsortedData.size());
             i++;
-            System.out.println("=-=-=-= Loop " + i + " =-=-=-=-=");
+            if (i % 100 == 0){
+                System.out.print(".");
+            }
         }
+        System.out.println();
         double totalPercentages = 0.0;
-        for (int k = 0; k != percentages.size(); k++) {
-            totalPercentages += percentages.get(k);
+        int totalUnsorted = 0;
+        for (int k = 0; k != numberOfUnsortedOutputs.size(); k++) {
+            totalUnsorted += numberOfUnsortedOutputs.get(k);
         }
-        final double FINAL_PERCENTAGE = totalPercentages / percentages.size();
-        System.out.println("The average of all trials is: " + FINAL_PERCENTAGE);
-
+        System.out.println("Total unsorted: " + totalUnsorted);
+        final int NUM_UNSORTED = totalUnsorted / numberOfUnsortedOutputs.size();
+        System.out.println("The average number of unsorted outputs is: " + NUM_UNSORTED);
     }
 }

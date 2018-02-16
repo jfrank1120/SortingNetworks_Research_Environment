@@ -56,13 +56,26 @@ public class SimpleEnvironment {
         return false;
     }
 
+    public ArrayList<int[]> createComparison(int numWires, int numComparisons) {
+        ArrayList<int[]> allPossibleComparisons = new ArrayList<int[]>();
+        for(int i = 0; i < numComparisons; i++) {
+            for (int k = 0; k < numWires; k++) {
+                for(int j = 0; j < numWires; j++) {
+                    if (k != j) {
+                        allPossibleComparisons.add(new int[]{k,j});
+                    }
+                }
+            }
+        }
+    }
+
     /**
      * Sorts all of the input data
      * @param data - An arraylist with strings that are the data
      * @return - A hashset containing all of the values that are not fully sorted
      */
-    public ArrayList<String> sortData (ArrayList<String> data) {
-        ArrayList<String> unsortedDataSets = new ArrayList<String>();
+    public HashSet<String> sortData (ArrayList<String> data) {
+        HashSet<String> unsortedDataSets = new HashSet<>();
         int i = 0;
         if (this.topWires.size() != this.bottomWires.size()) {
             System.out.println("Error, comparisons not properly formatted");
@@ -70,8 +83,6 @@ public class SimpleEnvironment {
         }
         // Loops through all strings in the ArrayList
         while (i != data.size()) {
-
-            System.out.println("Current string: " + data.get(i));
             // Loops through each character in the string
             for (int j = 0; j < data.get(i).length() - 1; j++) {
                 // Loop through each comparison
@@ -80,7 +91,7 @@ public class SimpleEnvironment {
                 for (int p = 0; p < this.topWires.size(); p++) {
                     if (topWires.get(p) > bottomWires.get(p)) {
                         int tempWire = topWires.get(p);
-                        topWires.set(p , bottomWires.get(p));
+                        topWires.set(p, bottomWires.get(p));
                         bottomWires.set(p, tempWire);
                     }
                     if (currentStringCharArray[topWires.get(p)] < currentStringCharArray[bottomWires.get(p)]) {
@@ -100,8 +111,8 @@ public class SimpleEnvironment {
                     isSorted = false;
                 }
             }
+            // If the string is not sorted
             if (!isSorted) {
-                //System.out.println("Adding: " + data.get(i));
                 unsortedDataSets.add(data.get(i));
             }
             i++;
@@ -109,16 +120,5 @@ public class SimpleEnvironment {
         topWires.clear();
         bottomWires.clear();
         return unsortedDataSets;
-    }
-
-    /**
-     * Returns the percentage of data that is unsorted in comparison to the total amount of data
-     * @param unsortedData - The sequences that are not sorted after going through the randomized network
-     * @param allData - All of the possible binary sequences for the number of wires
-     * @return - The percentage that were sorted by the random network
-     */
-    public double percentageNotSorted(ArrayList<String> unsortedData, ArrayList<String> allData) {
-        System.out.println(unsortedData.size() + " / " + allData.size());
-        return ((double) unsortedData.size() / (double) allData.size());
     }
 }
