@@ -56,9 +56,9 @@ public class SimpleEnvironment {
         return false;
     }
 
-    public ArrayList<int[]> createComparison(int numWires, int numComparisons) {
+    public ArrayList<int[]> generateComparisons(int numWires) {
         ArrayList<int[]> allPossibleComparisons = new ArrayList<int[]>();
-        for(int i = 0; i < numComparisons; i++) {
+        for(int i = 0; i < numWires; i++) {
             for (int k = 0; k < numWires; k++) {
                 for(int j = 0; j < numWires; j++) {
                     if (k != j) {
@@ -67,6 +67,7 @@ public class SimpleEnvironment {
                 }
             }
         }
+        return allPossibleComparisons;
     }
 
     /**

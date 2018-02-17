@@ -17,15 +17,14 @@ public class RandomTestField {
         int i = 0;
         Random rand = new Random();
         ArrayList<Integer> numberOfUnsortedOutputs = new ArrayList<Integer>();
-        while (i < 1000) {
+        while (i < 100) {
             ArrayList<String> AllData = TEST.generateBinary(size, "");
             int n = 0;
+            ArrayList<int[]> possibleComps = TEST.generateComparisons(size);
             while (n < numComps) {
-                int topPortion = rand.nextInt(size);
-                int bottomPortion = rand.nextInt(size);
-                if (TEST.createComparison(size, topPortion, bottomPortion)) {
-                    n++;
-                }
+                int[] currentComp = possibleComps.get(rand.nextInt(possibleComps.size()));
+                TEST.createComparison(size, currentComp[0], currentComp[1]);
+                n++;
             }
             HashSet<String> unsortedData = TEST.sortData(AllData);
             System.out.println("Current Trial: " + unsortedData.size());
