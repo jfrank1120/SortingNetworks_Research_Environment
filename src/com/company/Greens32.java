@@ -1,9 +1,10 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-
 public class Greens32 {
+    /**
+     * Creates all of the first 16 comparisons for Greens 32
+     * @param env - The environment object for the comparisons to be added onto
+     */
     public static void createGreens32(SimpleEnvironment env) {
         // Creating the first portion of Greene's 32
         // Depth 1
@@ -54,11 +55,17 @@ public class Greens32 {
         // Depth 15
         env.createComparison(16, 7, 15);
     }
+
+    /**
+     * Main method that creates the Environment containing Greens 32
+     * @param args
+     */
     public static void main(String[] args) {
-        SimpleEnvironment greene = new SimpleEnvironment(16);
-        createGreens32(greene);
-        greene.sortData();
-        String unsortedValsString = greene.toString();
+        SimpleEnvironment green = new SimpleEnvironment(16);
+        createGreens32(green);
+        green.sortData();
+        String unsortedValsString = green.toString();
         System.out.println(unsortedValsString);
     }
+
 }
