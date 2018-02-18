@@ -3,8 +3,8 @@ package com.company;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class Greenes32 {
-    public static void createGreenes32(SimpleEnvironment env) {
+public class Greens32 {
+    public static void createGreens32(SimpleEnvironment env) {
         // Creating the first portion of Greene's 32
         // Depth 1
         env.createComparison(16, 0, 1);
@@ -56,7 +56,7 @@ public class Greenes32 {
     }
     public static void main(String[] args) {
         SimpleEnvironment greene = new SimpleEnvironment(16);
-        createGreenes32(greene);
+        createGreens32(greene);
         greene.sortData();
         String unsortedValsString = greene.toString();
         System.out.println(unsortedValsString);
