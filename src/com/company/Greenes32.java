@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Greenes32 {
-    public static void main(String[] args) {
-        SimpleEnvironment env = new SimpleEnvironment();
-        ArrayList<String> AllData = env.generateBinary(16, "");
+    public static void createGreenes32(SimpleEnvironment env) {
         // Creating the first portion of Greene's 32
         // Depth 1
         env.createComparison(16, 0, 1);
@@ -55,21 +53,12 @@ public class Greenes32 {
         env.createComparison(16, 6, 14);
         // Depth 15
         env.createComparison(16, 7, 15);
-        
-        // Sorting of data 
-        ArrayList<Integer> unsortedOutputs = new ArrayList<Integer>();
-        HashSet<String> unsortedData = env.sortData(AllData);
-
-        // Attempting to print out all unsorted data so that it lines up horizontally
-        // so the data on the wire can be seen for all unsorted strings
-        /*
-        for (int i = 0; i < unsortedData.iterator().next().length() - 1; i++) {
-            for (String temp : unsortedData) {
-                System.out.println(temp.charAt(i));
-            }
-            System.out.println("--");
-        }
-        */
-        System.out.println("The number of unsorted outputs is: " + unsortedData.size());
+    }
+    public static void main(String[] args) {
+        SimpleEnvironment greene = new SimpleEnvironment(16);
+        createGreenes32(greene);
+        greene.sortData();
+        String unsortedValsString = greene.toString();
+        System.out.println(unsortedValsString);
     }
 }

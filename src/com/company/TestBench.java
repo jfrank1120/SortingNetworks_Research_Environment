@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Area for testing methods before implementation into the project
@@ -8,13 +9,16 @@ import java.util.ArrayList;
  */
 public class TestBench {
     public static void main(String[] args) {
-        ArrayList<String> names = new ArrayList<>();
-        names.add("Kristin");
-        char[] charTest = names.get(0).toCharArray();
-        System.out.println(charTest.toString());
-        String test = "WorkPlease";
-        System.out.println(test);
-        char[] charAry = test.toCharArray();
-        System.out.println(charAry);
+        HashSet<String> testSet = new HashSet<String>();
+        testSet.add("1234");
+        testSet.add("5678");
+        for (int i = 0; i < testSet.iterator().next().length() - 1; i++) {
+            for (String temp : testSet) {
+                System.out.print(temp.charAt(i));
+            }
+            System.out.println("Wire - " + i);
+            System.out.println();
+        }
+        System.out.println("End of printing");
     }
 }

@@ -7,29 +7,38 @@ package com.company;
 import java.util.HashSet;
 import java.util.ArrayList;
 public class SimpleEnvironment {
-    String inputData = "";
-    ArrayList<Integer> topWires = new ArrayList<>();
-    ArrayList<Integer> bottomWires = new ArrayList<>();
 
-    /**
+    String inputData = "";
+    ArrayList<Integer> topWires;
+    ArrayList<Integer> bottomWires;
+    HashSet<String> unsortedValues = new HashSet<String>();
+    ArrayList<String> allData = new ArrayList<String>();
+
+    public SimpleEnvironment(int size) {
+        this.allData = this.generateBinary(size, "");
+        this.topWires =  new ArrayList<>();
+        this.bottomWires =  new ArrayList<>();
+        this.unsortedValues = new HashSet<String>();
+    }
+   /**
      * Recursively generates all possible binary sequences for input size
      * @param bits - The size of the binary sequences in bits
      * @param current - The string from the previous iteration of the method
      * @return
      */
-    public ArrayList<String> generateBinary(int bits, String current) {
-        ArrayList<String> binaries = new ArrayList<>();
-        if (current.length() == bits) {
-            binaries.add(current);
-            return binaries;
-        }
+   public ArrayList<String> generateBinary(int bits, String current) {
+       ArrayList<String> binaries = new ArrayList<>();
+       if (current.length() == bits) {
+           binaries.add(current);
+           return binaries;
+       }
 
-        //pad a 0 and 1 in front of current;
-        binaries.addAll(generateBinary(bits, "0" + current));
-        binaries.addAll(generateBinary(bits, "1" + current));
+       //pad a 0 and 1 in front of current;
+       binaries.addAll(generateBinary(bits, "0" + current));
+       binaries.addAll(generateBinary(bits, "1" + current));
 
-        return binaries;
-    }
+       return binaries;
+   }
 
     /**
      * Creates a comparison that is then used during the SortData method
@@ -72,54 +81,69 @@ public class SimpleEnvironment {
 
     /**
      * Sorts all of the input data
-     * @param data - An arraylist with strings that are the data
      * @return - A hashset containing all of the values that are not fully sorted
      */
-    public HashSet<String> sortData (ArrayList<String> data) {
-        HashSet<String> unsortedDataSets = new HashSet<>();
+    public void sortData() {
         int i = 0;
         if (this.topWires.size() != this.bottomWires.size()) {
             System.out.println("Error, comparisons not properly formatted");
-            return unsortedDataSets;
         }
-        // Loops through all strings in the ArrayList
-        while (i != data.size()) {
-            // Loops through each character in the string
-            for (int j = 0; j < data.get(i).length() - 1; j++) {
-                // Loop through each comparison
-                String setToCharArray = data.get(i);
-                char[] currentStringCharArray = setToCharArray.toCharArray();
-                for (int p = 0; p < this.topWires.size(); p++) {
-                    if (topWires.get(p) > bottomWires.get(p)) {
-                        int tempWire = topWires.get(p);
-                        topWires.set(p, bottomWires.get(p));
-                        bottomWires.set(p, tempWire);
-                    }
-                    if (currentStringCharArray[topWires.get(p)] < currentStringCharArray[bottomWires.get(p)]) {
-                        // Swaps the two characters
-                        char temp = currentStringCharArray[this.bottomWires.get(p)];
-                        currentStringCharArray[this.bottomWires.get(p)] = currentStringCharArray[this.topWires.get(p)];
-                        currentStringCharArray[this.topWires.get(p)] = temp;
-                        String alteredSequence = new String(currentStringCharArray);
-                        data.set(i, alteredSequence);
+        else {
+            // Loops through all strings in the ArrayList
+            while (i != allData.size()) {
+                // Loops through each character in the string
+                for (int j = 0; j < this.allData.get(i).length() - 1; j++) {
+                    // Loop through each comparison
+                    String setToCharArray = this.allData.get(i);
+                    char[] currentStringCharArray = setToCharArray.toCharArray();
+                    for (int p = 0; p < this.topWires.size(); p++) {
+                        if (topWires.get(p) > bottomWires.get(p)) {
+                            int tempWire = topWires.get(p);
+                            topWires.set(p, bottomWires.get(p));
+                            bottomWires.set(p, tempWire);
+                        }
+                        if (currentStringCharArray[topWires.get(p)] < currentStringCharArray[bottomWires.get(p)]) {
+                            // Swaps the two characters
+                            char temp = currentStringCharArray[this.bottomWires.get(p)];
+                            currentStringCharArray[this.bottomWires.get(p)] = currentStringCharArray[this.topWires.get(p)];
+                            currentStringCharArray[this.topWires.get(p)] = temp;
+                            String alteredSequence = new String(currentStringCharArray);
+                            this.allData.set(i, alteredSequence);
+                        }
                     }
                 }
-            }
 
-            boolean isSorted = true;
-            for (int k = 0; k < data.get(i).length() - 1; k++) {
-                if ((data.get(i).charAt(k) < data.get(i).charAt(k + 1))) {
-                    isSorted = false;
+                boolean isSorted = true;
+                for (int k = 0; k < this.allData.get(i).length() - 1; k++) {
+                    if ((allData.get(i).charAt(k) < this.allData.get(i).charAt(k + 1))) {
+                        isSorted = false;
+                    }
                 }
+                // If the string is not sorted
+                if (!isSorted) {
+                    this.unsortedValues.add(this.allData.get(i));
+                }
+                i++;
             }
-            // If the string is not sorted
-            if (!isSorted) {
-                unsortedDataSets.add(data.get(i));
-            }
-            i++;
         }
         topWires.clear();
         bottomWires.clear();
-        return unsortedDataSets;
+    }
+    @Override
+    public String toString() {
+        // Attempting to print out all unsorted data so that it lines up horizontally
+        // so the data on the wire can be seen for all unsorted strings
+        String returnStr = "";
+        for (int i = 0; i < this.unsortedValues.iterator().next().length() - 1; i++) {
+            returnStr += "[";
+            for (String temp : this.unsortedValues) {
+                returnStr += temp.charAt(i);
+            }
+            returnStr += "] Wire - " + i + "\n";
+            //returnStr += "\n";
+        }
+        returnStr += "\n";
+        returnStr += "The number of unsorted outputs is: " + this.unsortedValues.size();
+        return returnStr;
     }
 }

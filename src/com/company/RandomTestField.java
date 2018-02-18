@@ -7,12 +7,12 @@ import java.util.Random;
 
 public class RandomTestField {
     public static void main(String[] args) {
-        SimpleEnvironment TEST = new SimpleEnvironment();
         System.out.print("Enter the number of wires: ");
         Scanner in = new Scanner(System.in);
         int size = in.nextInt();
         System.out.print("Enter the number of Random comparisons: ");
         int numComps = in.nextInt();
+        SimpleEnvironment TEST = new SimpleEnvironment(size);
         ArrayList<Double> percentages = new ArrayList<>();
         int i = 0;
         Random rand = new Random();
@@ -26,10 +26,10 @@ public class RandomTestField {
                 TEST.createComparison(size, currentComp[0], currentComp[1]);
                 n++;
             }
-            HashSet<String> unsortedData = TEST.sortData(AllData);
-            System.out.println("Current Trial: " + unsortedData.size());
-            System.out.println(unsortedData);
-            numberOfUnsortedOutputs.add(unsortedData.size());
+            TEST.sortData();
+            System.out.println("Current Trial: " + TEST.unsortedValues.size());
+            System.out.println(TEST.unsortedValues);
+            numberOfUnsortedOutputs.add(TEST.unsortedValues.size());
             i++;
             if (i % 100 == 0){
                 System.out.print(".");
