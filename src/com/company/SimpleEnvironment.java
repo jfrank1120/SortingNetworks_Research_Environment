@@ -134,7 +134,7 @@ public class SimpleEnvironment {
         // Attempting to print out all unsorted data so that it lines up horizontally
         // so the data on the wire can be seen for all unsorted strings
         String returnStr = "";
-        for (int i = 0; i < this.unsortedValues.iterator().next().length() - 1; i++) {
+        for (int i = 0; i < this.unsortedValues.iterator().next().length() ; i++) {
             returnStr += "[";
             for (String temp : this.unsortedValues) {
                 returnStr += temp.charAt(i);
