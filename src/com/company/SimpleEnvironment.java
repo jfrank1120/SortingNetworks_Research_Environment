@@ -102,6 +102,8 @@ public class SimpleEnvironment {
                             topWires.set(p, bottomWires.get(p));
                             bottomWires.set(p, tempWire);
                         }
+                        //System.out.println("p = " + p);
+                        //System.out.println("j = " + j);
                         if (currentStringCharArray[topWires.get(p)] < currentStringCharArray[bottomWires.get(p)]) {
                             // Swaps the two characters
                             char temp = currentStringCharArray[this.bottomWires.get(p)];
@@ -134,16 +136,21 @@ public class SimpleEnvironment {
         // Attempting to print out all unsorted data so that it lines up horizontally
         // so the data on the wire can be seen for all unsorted strings
         String returnStr = "";
-        for (int i = 0; i < this.unsortedValues.iterator().next().length() ; i++) {
-            returnStr += "[";
-            for (String temp : this.unsortedValues) {
-                returnStr += temp.charAt(i);
+        if (this.unsortedValues.size()!= 0) {
+            for (int i = 0; i < this.unsortedValues.iterator().next().length(); i++) {
+                returnStr += "[";
+                for (String temp : this.unsortedValues) {
+                    returnStr += temp.charAt(i);
+                }
+                returnStr += "] Wire - " + i + "\n";
+                //returnStr += "\n";
             }
-            returnStr += "] Wire - " + i + "\n";
-            //returnStr += "\n";
+            returnStr += "\n";
+            returnStr += "The number of unsorted outputs is: " + this.unsortedValues.size();
         }
-        returnStr += "\n";
-        returnStr += "The number of unsorted outputs is: " + this.unsortedValues.size();
+        else {
+            returnStr = "The number of unsorted outputs is: 0";
+        }
         return returnStr;
     }
 }
