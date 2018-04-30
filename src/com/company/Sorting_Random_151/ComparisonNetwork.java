@@ -5,6 +5,7 @@ import com.company.Coles_Env.networks.Comparator;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Random;
 
 /**
  * Models a comparison network on wires index 0, 1, ..., n-1. 
@@ -39,9 +40,18 @@ public class ComparisonNetwork {
             for (int j = 0; j < numWires; j++) {
                 input[j] = m % 2;
                 m /= 2;
-            }            
+            }
+            // Selects random binary strings from the current
+            // set of all possible binary strings that had been
+            // generated in the code above
+            int[] inputStrings = new int[150];
+            for (int p = 0; p < 150; p++) {
+                Random rand = new Random();
+                inputStrings[p] = input[rand.nextInt()];
+            }
+            System.out.println(inputStrings.length + "- This is the number of input binary strings");
             
-            int[] output = feed(input);            
+            int[] output = feed(inputStrings);
             if (!isSorted(output)) {
                 String str = "";
                 for (int j : output) {

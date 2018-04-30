@@ -5,25 +5,22 @@ public class QuasiOrdering {
     public static HashSet<String> quasiSort(Binary_Collection inputData) {
         HashSet<String> non_quasi_strings = new HashSet<>();
 
-        for(int i = 0; i < inputData.binaryStrings.size() - 1; ++i) {
+        // Bit comparison
+        for(int k = 0; k < inputData.binaryStrings.size() - 1; ++k) {
             boolean isSorted = true;
             // Loops through all strings
-            for (int k = 1; (k + i) < inputData.binaryStrings.size() && (isSorted == true); ++k) {
-                // Loops through strings that are after the current string @i
-                System.out.println(k);
-                for (int j = 0; (j < inputData.binaryStrings.get(j).length()); ++j) {
-                    // Loops through characters within the string
-                    int var1 = Character.getNumericValue(inputData.binaryStrings.get(i).charAt(j));
-                    int var2 = Character.getNumericValue(inputData.binaryStrings.get(i + k).charAt(j));
-                    if (var1 > var2 && var1 != var2) {
-                        isSorted = false;
-                        break;
-                    }
+            for (int i = 0; (i < inputData.binaryStrings.get(i).length()); ++i) {
+                // Loops through characters within the string
+                int bitI = Character.getNumericValue(inputData.binaryStrings.get(k).charAt(i));
+                int bitJ = Character.getNumericValue(inputData.binaryStrings.get(k).charAt(j));
+                if (var1 > var2 && var1 != var2) {
+                    isSorted = false;
+                    break;
                 }
-                if (!isSorted) {
-                    System.out.println("Adding: " + inputData.binaryStrings.get(i));
-                    non_quasi_strings.add(inputData.binaryStrings.get(i));
-                }
+            }
+            if (!isSorted) {
+                System.out.println("Adding: " + inputData.binaryStrings.get(i));
+                non_quasi_strings.add(inputData.binaryStrings.get(i));
             }
         }
         return non_quasi_strings;
