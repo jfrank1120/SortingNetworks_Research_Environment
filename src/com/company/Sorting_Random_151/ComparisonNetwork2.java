@@ -12,7 +12,7 @@ import java.util.Random;
  *
  * @author Drue Coles
  */
-public class ComparisonNetwork {
+public class ComparisonNetwork2 {
 
     // sequence of comparators defining this network
     private final ArrayList<Comparator> comparisons;
@@ -24,7 +24,7 @@ public class ComparisonNetwork {
      * Creates a new network on a specified number of wires with a specified sequence of
      * comparisons. T 
      */
-    public ComparisonNetwork(int numWires, ArrayList<Comparator> comparisons) {
+    public ComparisonNetwork2(int numWires, ArrayList<Comparator> comparisons) {
         
         this.comparisons = (ArrayList<Comparator>) comparisons.clone();
 
@@ -47,11 +47,12 @@ public class ComparisonNetwork {
             int[] inputStrings = new int[150];
             for (int p = 0; p < 150; p++) {
                 Random rand = new Random();
-                inputStrings[p] = input[rand.nextInt()];
+                inputStrings[p] = input[rand.nextInt(n)];
             }
             System.out.println(inputStrings.length + "- This is the number of input binary strings");
             
             int[] output = feed(inputStrings);
+            System.out.println("Sorting Data");
             if (!isSorted(output)) {
                 String str = "";
                 for (int j : output) {

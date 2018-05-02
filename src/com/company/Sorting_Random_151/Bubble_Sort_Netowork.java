@@ -19,7 +19,7 @@ public class Bubble_Sort_Netowork {
                 {0, 1}, {2, 3}, {4, 5}, {6, 7},
                 {8, 9}, {10, 11}, {12, 13}, {14, 15},
         };
-        int [] trialResults = new int[100];
+        ArrayList<Integer> trialResults = new ArrayList<>();
         int trials = 0;
         Comparator lastComp= new Comparator(0,0);
         // Trials Loop
@@ -32,17 +32,20 @@ public class Bubble_Sort_Netowork {
                 baseComparators.add(new Comparator(comp[0], comp[1]));
             }
             // Declaring variables outside of loop for proper use
-            ComparisonNetwork net;
+            ComparisonNetwork2 net;
             Set<String> badOutputs;
             int c = 0;
             int currentComp = 0;
+            ComparisonNetwork2 testNet = new ComparisonNetwork2(16, currentComparators);
+            System.out.println("test Sort");
             boolean trialEnded = false;
             do {
-                net = new ComparisonNetwork(16, currentComparators); // Creates new network
+                net = new ComparisonNetwork2(16, currentComparators); // Creates new network
                 badOutputs = net.getBadOutputs(); // Gets the current bad outputs based on comparisons
-
+                System.out.println("Got bad outputs");
+                System.out.println("Current bad outputs: " + badOutputs.size());
                 if (c == currentComparators.size() && badOutputs.size() != 0) { // If there are bad outputs and you are on the last comparison
-                    trialResults[trials] = currentComparators.size(); // Add trial value to array for later calculation
+                    trialResults.add(currentComparators.size()); // Add trial value to array for later calculation
                     trialEnded = true; // Set boolean to false so that trial will end
                 } else {
                     // If there are still no bad outputs
@@ -55,7 +58,14 @@ public class Bubble_Sort_Netowork {
                 }
                 c++;
             } while (!trialEnded);
+            System.out.println("Trial " + trials + ": Completed");
             trials++;
         }
+        // Average calculation
+        int sum = 0;
+        for (int t = 0; t < trialResults.size(); t++) {
+            sum += trialResults.get(t);
+        }
+        System.out.println("The average number of comparisons needed was: " + sum/100);
     }
 }
