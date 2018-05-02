@@ -37,12 +37,12 @@ public class Bubble_Sort_Netowork {
             int c = 0;
             int currentComp = 0;
             ComparisonNetwork2 testNet = new ComparisonNetwork2(16, currentComparators);
-            System.out.println("test Sort");
+            System.out.println("test Sort, BadOutputs: " + testNet.getBadOutputs().size());
+
             boolean trialEnded = false;
             do {
                 net = new ComparisonNetwork2(16, currentComparators); // Creates new network
                 badOutputs = net.getBadOutputs(); // Gets the current bad outputs based on comparisons
-                System.out.println("Got bad outputs");
                 System.out.println("Current bad outputs: " + badOutputs.size());
                 if (c == currentComparators.size() && badOutputs.size() != 0) { // If there are bad outputs and you are on the last comparison
                     trialResults.add(currentComparators.size()); // Add trial value to array for later calculation
@@ -56,6 +56,7 @@ public class Bubble_Sort_Netowork {
                         currentComparators.add(lastComp); // Add the previously removed comparison back to the list
                     }
                 }
+                System.out.println("Current Comp #:" + currentComparators.size());
                 c++;
             } while (!trialEnded);
             System.out.println("Trial " + trials + ": Completed");
