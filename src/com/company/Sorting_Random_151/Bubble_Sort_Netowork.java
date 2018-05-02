@@ -7,10 +7,8 @@ import java.util.ArrayList;
 import java.util.Set;
 
 /**
- * Constructs a comparison network consisting of the first 32 comparisons of Green's sorting network
- * on 16 wires and outputs all unsorted binary outputs (there are 151 of them).
  *
- * @author Drue Coles
+ * @author Jared Frank
  */
 public class Bubble_Sort_Netowork {
 
@@ -23,29 +21,36 @@ public class Bubble_Sort_Netowork {
         };
         int [] trialResults = new int[100];
         int trials = 0;
+        Comparator lastComp= new Comparator(0,0);
         // Trials Loop
         while (trials < 100) {
             // Adds all comparisons to the current network
-            ArrayList<Comparator> comparators = new ArrayList<>();
+            ArrayList<Comparator> currentComparators = new ArrayList<>();
+            ArrayList<Comparator> baseComparators = new ArrayList<>();
             for (int[] comp : a) {
-                comparators.add(new Comparator(comp[0], comp[1]));
+                currentComparators.add(new Comparator(comp[0], comp[1]));
+                baseComparators.add(new Comparator(comp[0], comp[1]));
             }
             // Declaring variables outside of loop for proper use
             ComparisonNetwork net;
             Set<String> badOutputs;
             int c = 0;
+            int currentComp = 0;
             boolean trialEnded = false;
             do {
-                net = new ComparisonNetwork(16, comparators); // Creates new network
+                net = new ComparisonNetwork(16, currentComparators); // Creates new network
                 badOutputs = net.getBadOutputs(); // Gets the current bad outputs based on comparisons
 
-                if (c == comparators.size() && badOutputs.size() != 0) { // If there are bad outputs and you are on the last comparison
-                    trialResults[trials] = comparators.size(); // Add trial value to array for later calculation
+                if (c == currentComparators.size() && badOutputs.size() != 0) { // If there are bad outputs and you are on the last comparison
+                    trialResults[trials] = currentComparators.size(); // Add trial value to array for later calculation
                     trialEnded = true; // Set boolean to false so that trial will end
                 } else {
                     // If there are still no bad outputs
                     if (badOutputs.size() == 0) {
-                        comparators.remove(c);
+                        lastComp = currentComparators.get(c);
+                        currentComparators.remove(c); // Remove Comparison at spot C
+                    } else {
+                        currentComparators.add(lastComp); // Add the previously removed comparison back to the list
                     }
                 }
                 c++;
