@@ -93,4 +93,12 @@ public class ComparisonNetwork151 {
         }
         return true;
     }
+
+    /**
+     * Adds a new comparison to the current comparisons on the network
+     * @param c
+     */
+    public void addComparison(Comparator c) {
+        this.comparisons.add(c);
+    }
 }

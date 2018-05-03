@@ -17,6 +17,9 @@ public class Binary_Collection {
     public ArrayList<String> generateBinary(int bits, String current) {
         ArrayList<String> binaries = new ArrayList<>();
         if (current.length() == bits) {
+            StringBuilder strB = new StringBuilder();
+            strB.append(current);
+            current = strB.reverse().toString();
             binaries.add(current);
             return binaries;
         }

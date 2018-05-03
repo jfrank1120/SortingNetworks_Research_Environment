@@ -24,4 +24,7 @@ public class Comparator {
             data[bot] = temp;
         }
     }
+    public String toString() {
+        return "Top: " + this.top + ", Bot: " + this.bot;
+    }
 }
