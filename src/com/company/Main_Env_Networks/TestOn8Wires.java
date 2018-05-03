@@ -1,4 +1,4 @@
-package com.company.Coles_Env.networks;
+package com.company.Main_Env_Networks;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -7,7 +7,7 @@ import java.util.Set;
  * Creates a sorting network on 8 wires and obtains a list of unsorted binary outputs. The list
  * should be empty.
  * 
- * @author Drue Coles
+ * @author Jared Frank
  */
 public class TestOn8Wires {
 

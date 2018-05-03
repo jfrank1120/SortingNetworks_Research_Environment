@@ -1,4 +1,4 @@
-package com.company.Coles_Env.networks;
+package com.company.Main_Env_Networks;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -7,7 +7,7 @@ import java.util.Set;
  * Constructs a comparison network consisting of the first 32 comparisons of Green's sorting network
  * on 16 wires and outputs all unsorted binary outputs (there are 151 of them).
  * 
- * @author Drue Coles
+ * @author Jared Frank
  */
 public class TestOnGreen32 {
 

@@ -1,9 +1,9 @@
-package com.company.Coles_Env.networks;
+package com.company.Main_Env_Networks;
 
 /**
  * Models a comparator attached to a pair of wires.
  *
- * @author Drue Coles
+ * @author Jared Frank
  */
 public class Comparator {
     private final int top;

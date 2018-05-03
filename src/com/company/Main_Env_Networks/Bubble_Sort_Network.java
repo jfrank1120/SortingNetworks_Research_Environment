@@ -1,7 +1,4 @@
-package com.company.Sorting_Random_151;
-
-import com.company.Coles_Env.networks.Comparator;
-import com.company.Coles_Env.networks.ComparisonNetwork;
+package com.company.Main_Env_Networks;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -10,14 +7,29 @@ import java.util.Set;
  *
  * @author Jared Frank
  */
-public class Bubble_Sort_Netowork {
+public class Bubble_Sort_Network {
 
 
     public static void main(String[] args) {
         // Original Bubble sorting comparisons for the 16 wire sequence
+        /*
+        int[][] a = {
+                {0, 1}, {1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 6},
+                {6, 7}, {7, 8},
+                {8, 9}, {9, 10}, {10, 11}, {11, 12}, {12, 13}, {13, 14}, {14, 15},
+        };
+        */
         int[][] a = {
                 {0, 1}, {2, 3}, {4, 5}, {6, 7},
-                {8, 9}, {10, 11}, {12, 13}, {14, 15},
+                {0, 2}, {1, 3}, {4, 6}, {5, 7},
+                {1, 2}, {5, 6}, {0, 4}, {3, 7},
+                {1, 5}, {2, 6},
+                {1, 4}, {3, 6},
+                {2, 4}, {3, 5},
+                {3, 4}
+        };
+        int [][] b = {
+                {14, 15}, {13, 14}, {12, 13}, {11, 12}, {10, 11}, {9, 10}, {8, 9}, {7, 8}, {6, 7}, {5, 6}, {4, 5}, {3, 4}, {2, 3}, {1, 2}, {0, 1},
         };
         ArrayList<Integer> trialResults = new ArrayList<>();
         int trials = 0;
@@ -32,16 +44,15 @@ public class Bubble_Sort_Netowork {
                 baseComparators.add(new Comparator(comp[0], comp[1]));
             }
             // Declaring variables outside of loop for proper use
-            ComparisonNetwork2 net;
+            ComparisonNetwork151 net;
             Set<String> badOutputs;
             int c = 0;
             int currentComp = 0;
-            ComparisonNetwork2 testNet = new ComparisonNetwork2(16, currentComparators);
+            ComparisonNetwork151 testNet = new ComparisonNetwork151(8, currentComparators);
             System.out.println("test Sort, BadOutputs: " + testNet.getBadOutputs().size());
-
             boolean trialEnded = false;
             do {
-                net = new ComparisonNetwork2(16, currentComparators); // Creates new network
+                net = new ComparisonNetwork151(8, currentComparators); // Creates new network
                 badOutputs = net.getBadOutputs(); // Gets the current bad outputs based on comparisons
                 System.out.println("Current bad outputs: " + badOutputs.size());
                 if (c == currentComparators.size() && badOutputs.size() != 0) { // If there are bad outputs and you are on the last comparison
@@ -50,14 +61,19 @@ public class Bubble_Sort_Netowork {
                 } else {
                     // If there are still no bad outputs
                     if (badOutputs.size() == 0) {
+                        System.out.println("#Comparators: " + currentComparators.size() + ", Removing comp#" + c);
                         lastComp = currentComparators.get(c);
                         currentComparators.remove(c); // Remove Comparison at spot C
                     } else {
-                        currentComparators.add(lastComp); // Add the previously removed comparison back to the list
+                        if (c != 0) {
+                            currentComparators.add(lastComp); // Add the previously removed comparison back to the list
+                            c = -1;
+                        }
                     }
                 }
                 System.out.println("Current Comp #:" + currentComparators.size());
                 c++;
+                System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
             } while (!trialEnded);
             System.out.println("Trial " + trials + ": Completed");
             trials++;

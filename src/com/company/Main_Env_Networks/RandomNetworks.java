@@ -1,4 +1,4 @@
-package com.company.Coles_Env.networks;
+package com.company.Main_Env_Networks;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -8,7 +8,7 @@ import java.util.Scanner;
  * Monte Carlo simulation to calculate the expected number of unsorted binary outputs for a 16-wire
  * comparison network with 60 comparisons chosen independently at random.
  * 
- * @author Drue Coles
+ * @author Jared Frank
  */
 public class RandomNetworks {
 
