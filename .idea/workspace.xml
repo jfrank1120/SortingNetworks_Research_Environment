@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03988842-f3f8-49a1-b630-2788e6355e61" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/company/Main_Env_Networks/Buttom_Up_151.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Coles_Env/networks/Comparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Coles_Env/networks/ComparisonNetwork.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Coles_Env/networks/QuasiSorting.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Coles_Env/networks/RandomNetworks.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Coles_Env/networks/TestOn8Wires.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Coles_Env/networks/TestOnGreen32.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Coles_Env/networks/sortingGreens32.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main_Env_Networks/Bubble_Sort_Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main_Env_Networks/Bubble_Sort_Network.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main_Env_Networks/Comparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main_Env_Networks/Comparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main_Env_Networks/ComparisonNetwork151.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main_Env_Networks/ComparisonNetwork151.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main_Env_Networks/sortingGreens32.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main_Env_Networks/sortingGreens32.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/QuasiOrderingWork/Binary_Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/QuasiOrderingWork/Binary_Collection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/QuasiOrderingWork/Binary_Collection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/company/QuasiOrderingWork/Binary_Collection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/QuasiOrderingWork/QuasiOrdering.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/company/QuasiOrderingWork/QuasiOrdering.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/QuasiOrderingWork/QuasiOrdering.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/QuasiOrderingWork/QuasiOrdering.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -53,8 +41,8 @@
       <file leaf-file-name="QuasiOrdering.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/QuasiOrderingWork/QuasiOrdering.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+            <state relative-caret-position="147">
+              <caret line="28" column="34" lean-forward="true" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -314,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1525310292066</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Lots and lots of changes&#10;- Bottom up Correctly working&#10;- Top Down almost fully working&#10;- Quasi ordering needs one last change to fully work">
+      <created>1525328611962</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1525328611962</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -328,7 +323,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.14412238" />
@@ -362,7 +356,8 @@
       <path value="$PROJECT_DIR$/SortingNetworks_Research_Environment" />
     </ignored-roots>
     <MESSAGE value="Changes upon changes.&#10;- Package deletion and arrangement&#10;- Creation of 8 wire test env in order to expand to 16&#10;- 151 Network class created&#10;- Small commenting changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes upon changes.&#10;- Package deletion and arrangement&#10;- Creation of 8 wire test env in order to expand to 16&#10;- 151 Network class created&#10;- Small commenting changes" />
+    <MESSAGE value="Lots and lots of changes&#10;- Bottom up Correctly working&#10;- Top Down almost fully working&#10;- Quasi ordering needs one last change to fully work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lots and lots of changes&#10;- Bottom up Correctly working&#10;- Top Down almost fully working&#10;- Quasi ordering needs one last change to fully work" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -510,17 +505,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main_Env_Networks/ComparisonNetwork151.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1571">
-          <caret line="97" column="70" selection-start-line="97" selection-start-column="70" selection-end-line="97" selection-end-column="70" />
-          <folding>
-            <element signature="e#3061#3062#0" expanded="true" />
-            <element signature="e#3100#3101#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Main_Env_Networks/Comparator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
@@ -529,13 +513,6 @@
             <element signature="e#603#604#0" expanded="true" />
             <element signature="e#668#669#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main_Env_Networks/TestOn8Wires.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -563,13 +540,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main_Env_Networks/Buttom_Up_151.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/QuasiOrderingWork/Binary_Collection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" column="51" lean-forward="true" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-7">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -580,17 +554,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/QuasiOrderingWork/Binary_Collection.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main_Env_Networks/Buttom_Up_151.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+        <state relative-caret-position="378">
+          <caret line="18" column="51" lean-forward="true" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main_Env_Networks/TestOn8Wires.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main_Env_Networks/ComparisonNetwork151.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1571">
+          <caret line="97" column="70" selection-start-line="97" selection-start-column="70" selection-end-line="97" selection-end-column="70" />
+          <folding>
+            <element signature="e#3061#3062#0" expanded="true" />
+            <element signature="e#3100#3101#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/QuasiOrderingWork/QuasiOrdering.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        <state relative-caret-position="147">
+          <caret line="28" column="34" lean-forward="true" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
         </state>
       </provider>
     </entry>
