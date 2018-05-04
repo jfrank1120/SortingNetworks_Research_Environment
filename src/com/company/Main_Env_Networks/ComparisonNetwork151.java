@@ -1,5 +1,6 @@
 package com.company.Main_Env_Networks;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
@@ -59,7 +60,25 @@ public class ComparisonNetwork151 {
             }
         }
     }
-
+    public ComparisonNetwork151(ArrayList<String> inputList, int numWires, ArrayList<Comparator> comparisons) {
+        this.comparisons = (ArrayList<Comparator>) comparisons.clone();
+        for (int i = 0; i < inputList.size(); i++) {
+                // Fill input array with bits in binary representation of i. Then apply the
+                // network to this array and store the result in the output array.
+            int[] input = new int[151];
+                for (int k = 0; k < inputList.get(i).length(); k++) {
+                    input[k] = Integer.parseInt(inputList.get(i).charAt(k)+ "");
+                }
+                int[] output = feed(input);
+                if (!isSorted(output)) {
+                    String str = "";
+                    for (int j : output) {
+                        str += j;
+                    }
+                    badOutputs.add(str);
+                }
+            }
+    }
     /**
      * Returns a copy of the bad (unsorted) outputs of this network.
      */

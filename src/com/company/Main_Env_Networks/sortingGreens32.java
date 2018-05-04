@@ -76,5 +76,9 @@ public class sortingGreens32 {
             System.out.println();
         }
         System.out.println("Total Unsorted: " + badOutputs.size());
+        ArrayList<String> the151 = new ArrayList<>();
+        for (String out: badOutputs) {
+            the151.add(out);
+        }
     }
 }
